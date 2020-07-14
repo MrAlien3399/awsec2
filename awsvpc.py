@@ -4,6 +4,7 @@ import boto3
 
 ec2 = boto3.resource('ec2')
 
+#Create VPC 
 def create_vpc(vpc_cidr,tag_value):
     
     global vpc
@@ -13,6 +14,8 @@ def create_vpc(vpc_cidr,tag_value):
 
     return f'VPC Created {vpc.id}'
 
+#Create Internet Gateway
+
 def create_igw():
     
     global igw
@@ -20,6 +23,8 @@ def create_igw():
     vpc.attach_internet_gateway(InternetGatewayId=igw.id)
     
     return f'Internet Gateway Created {igw.id}'
+
+#Create Subnet
 
 def create_subnet(subnet_cidr,azid,tag_value):
 
@@ -29,6 +34,8 @@ def create_subnet(subnet_cidr,azid,tag_value):
     
     return f'Subnet Created {subnet.id}'
 
+#Create Route Table
+
 def create_rt(tag_value,descidrblock,subnetid):
     rt = vpc.create_route_table(VpcId=vpc.id)
     rt.create_tags(Tags = [{'Key':'Name','Value':tag_value}])
@@ -36,6 +43,8 @@ def create_rt(tag_value,descidrblock,subnetid):
     rt.associate_with_subnet(SubnetId=subnetid)
 
     return f'Route Table Created {rt.id}'
+
+#Create Security Groups
 
 def create_sg(gpname,des):
 
