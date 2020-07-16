@@ -55,11 +55,12 @@ def create_sg(gpname,des):
         fromport = input('FromPort :')
         toport = input('ToPort :')
         sg.authorize_ingress(CidrIp=cidr,IpProtocol='tcp',FromPort=int(fromport),ToPort=int(toport))
+        return f'Security Group Created {sg.id}'
         ask = input('Add Rule Again? [Y/n]')
         if ask.lower() != 'y':
             break
 
-    return f'Security Group Created {sg.id}'
+    
 
 def main():
     vpc_cidr = input('VPC CIDR Block :')
