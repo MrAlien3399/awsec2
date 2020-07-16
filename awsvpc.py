@@ -40,7 +40,7 @@ def create_rt(tag_value,descidrblock,subnetid):
     rt = vpc.create_route_table(VpcId=vpc.id)
     rt.create_tags(Tags = [{'Key':'Name','Value':tag_value}])
     rt.create_route(DestinationCidrBlock=descidrblock,GatewayId=igw.id)
-    rt.associate_with_subnet(SubnetId=subnetid)
+    rt.associate_with_subnet(SubnetId=subnet.id)
 
     return f'Route Table Created {rt.id}'
 
