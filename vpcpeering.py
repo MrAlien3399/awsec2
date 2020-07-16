@@ -24,7 +24,7 @@ def accept():
     accepted = vpc_peering_connection.accept()
 
 def main():
-    req_id = input('VPC Id :')
+    req_id = input('Requester VPC Id :')
     aws_id = input('AWS Account ID :')
     accept_id = input('Accepter VPC ID :')
     region_id = input('Region ID of Accepter :')
